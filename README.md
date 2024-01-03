@@ -16,8 +16,8 @@ git checkout 63990d8b873622844bb0ac588ab19d2ca66f062e
 
 # compile and install volepsi
 python3 build.py -DVOLE_PSI_ENABLE_BOOST=ON -DVOLE_PSI_ENABLE_GMW=ON -DVOLE_PSI_ENABLE_CPSI=OFF -DVOLE_PSI_ENABLE_OPPRF=OFF
-python3 python3 build.py --install=../libvolepsi
-cp volepsi/out/build/linux/volePSI/config.h ../libvolepsi/include/volePSI/
+python3 build.py --install=../libvolepsi
+cp out/build/linux/volePSI/config.h ../libvolepsi/include/volePSI/
 ```
 
 ### Compile MPSU
