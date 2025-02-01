@@ -55,7 +55,7 @@ void Beaver_2party_test(CLP &cmd){
     std::cout << "P" << idx + 1 << " comm cost  = " << chl.bytesSent() * 1.0 / 1024 / 1024 << " MB" << std::endl;
 
     coproto::sync_wait(chl.flush());
-    chl.close();
+    coproto::sync_wait(chl.close());
     
     if (idx == 0){
         std::cout << "numTriplesSbox = " << numTriplesSbox << std::endl;

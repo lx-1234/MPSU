@@ -75,7 +75,7 @@ void tripleGenParty(u32 idx, u32 numParties, u32 numElements, u32 numThreads){
 
     // close channel
     for (u32 i = 0; i < chl.size(); ++i){
-        chl[i].close();
+        coproto::sync_wait(chl[i].close());
     }
 
     if (idx == 0){

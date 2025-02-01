@@ -235,17 +235,17 @@ std::vector<block> MPSIParty(u32 idx, u32 numParties, u32 numElements, std::vect
         // std::cout << "P" << idx + 1 << " send share done" << std::endl;
 
         if (idx == 1){
-            chl[0].close();
+            coproto::sync_wait(chl[0].close());
             if (numParties > 2){
-                chl[idx].close();
+                coproto::sync_wait(chl[idx].close());
             }
         } else if (idx != numParties - 1){
-            chl[0].close();
-            chl[idx - 1].close();
-            chl[idx].close();
+            coproto::sync_wait(chl[0].close());
+            coproto::sync_wait(chl[idx - 1].close());
+            coproto::sync_wait(chl[idx].close());
         } else {
-            chl[0].close();
-            chl[idx - 1].close();
+            coproto::sync_wait(chl[0].close());
+            coproto::sync_wait(chl[idx - 1].close());
         }
 
         // std::cout << "P" << idx + 1 << " closes sockets" << std::endl;
@@ -302,7 +302,7 @@ std::vector<block> MPSIParty(u32 idx, u32 numParties, u32 numElements, std::vect
 
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
     
         timer.setTimePoint("end");
@@ -532,17 +532,17 @@ u32 MPSICAParty(u32 idx, u32 numParties, u32 numElements, std::vector<block> &se
         std::cout << "P" << idx + 1 << " communication cost = " << comm / 1024 / 1024 << " MB" << std::endl;
 
         if (idx == 1){
-            chl[0].close();
+            coproto::sync_wait(chl[0].close());
             if (numParties > 2){
-                chl[idx].close();
+                coproto::sync_wait(chl[idx].close());
             }
         } else if (idx != numParties - 1){
-            chl[0].close();
-            chl[idx - 1].close();
-            chl[idx].close();
+            coproto::sync_wait(chl[0].close());
+            coproto::sync_wait(chl[idx - 1].close());
+            coproto::sync_wait(chl[idx].close());
         } else {
-            chl[0].close();
-            chl[idx - 1].close();
+            coproto::sync_wait(chl[0].close());
+            coproto::sync_wait(chl[idx - 1].close());
         }
 
         return 0;
@@ -596,7 +596,7 @@ u32 MPSICAParty(u32 idx, u32 numParties, u32 numElements, std::vector<block> &se
 
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
     
         timer.setTimePoint("end");

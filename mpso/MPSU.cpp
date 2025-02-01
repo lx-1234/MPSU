@@ -295,7 +295,7 @@ std::vector<block> MPSUParty(u32 idx, u32 numParties, u32 numElements, std::vect
         std::cout << "P" << idx + 1 << " communication cost = " << comm / 1024 / 1024 << " MB" << std::endl;
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
         return std::vector<block>();
     }
@@ -356,7 +356,7 @@ std::vector<block> MPSUParty(u32 idx, u32 numParties, u32 numElements, std::vect
 
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
     
         timer.setTimePoint("end");
@@ -618,7 +618,7 @@ u32 MPSUCAParty(u32 idx, u32 numParties, u32 numElements, std::vector<block> &se
         std::cout << "P" << idx + 1 << " communication cost = " << comm / 1024 / 1024 << " MB" << std::endl;
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
         return 0;
     }
@@ -672,7 +672,7 @@ u32 MPSUCAParty(u32 idx, u32 numParties, u32 numElements, std::vector<block> &se
 
         // close sockets
         for (u32 i = 0; i < chl.size(); ++i){
-            chl[i].close();
+            coproto::sync_wait(chl[i].close());
         }
     
         timer.setTimePoint("end");
